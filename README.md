@@ -95,6 +95,7 @@ uv run --env-file .env python examples/run.py \
 - **Validate the selected target.** Clicks check the document, form values, target, and nearby context. Animation alone does not force another prediction. Resolve current geometry and reject covered controls before input.
 - **Wait for useful state.** After typing into a combobox, wait for visible suggestions, capped at 200 ms. Other interactions get at most two animation frames or 50 ms. These reads happen after execution is logged.
 - **Keep hidden tabs rendering.** Focus emulation prevents background animation throttling without switching Chrome's visible tab.
+- **Reuse one tab per site.** Each site keeps one persistent background tab that later runs reuse, including after an interrupted run, so repeated checks never pile up duplicate tabs or invite Chrome's automatic grouping. Tabs unused for a month are closed by the tool.
 - **Send visible text.** Offscreen article bodies and footers do not fill the model context.
 - **Reuse an interrupted text request.** A generated value survives a stale-page retry only if the entire text-helper input is unchanged.
 
